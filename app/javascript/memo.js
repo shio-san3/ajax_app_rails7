@@ -1,3 +1,13 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+function post (){
+  const form = document.getElementById("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const XHR = new XMLHttpRequest();
+    XHR.open("POST", "/posts", true);
+    XHR.responseType = "json";
+    XHR.send(formData);
+  });
+ };
+ 
+ window.addEventListener('turbo:load', post);
